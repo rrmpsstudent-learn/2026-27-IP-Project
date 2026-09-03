@@ -9,10 +9,8 @@ board = [["","","","","","","",""],
 ["","","","","","","",""],
 ["","","","","","","",""]]
 
-BP = pieces.Piece("Pawn","Black","H8")
+all_pieces = {"BP":pieces.Piece("Pawn","Black",board[1][0])}
 
-print(BP.color)
-
-
+print(str(all_pieces["BP"]))
 
 
