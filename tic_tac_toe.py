@@ -29,17 +29,16 @@ while(chance_counter <= 1):
     choice_logs.append(choice.capitalize())
     #choice_str = choice.split(" ")
     choice_list = list()
-    if choice.capitalize() == "QUIT":
+    if choice.upper() == "QUIT":
         break
-    elif choice.capitalize() == "SHOW --LOGS":
+    elif choice.upper() == "SHOW --LOGS":
         print(choice_list)
-
-
-    for i in choice:
-        choice_list.append(i)
-
-    mapping = {'A':0,'B':1,'C':2}
     else:
+        for i in choice:
+            choice_list.append(i)
+
+        mapping = {'A':0,'B':1,'C':2}
+    
         try:
             grid[mapping[choice_list[0]]][int(choice_list[1]) - 1] = f"{user_symbol}"
             grid_creator()
