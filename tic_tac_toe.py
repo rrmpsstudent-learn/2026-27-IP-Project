@@ -30,6 +30,7 @@ while(chance_counter <= 1):
     #choice_str = choice.split(" ")
     choice_list = list()
     if choice.upper() == "QUIT":
+        print("Thank you for playing")
         break
     elif choice.upper() == "SHOW --LOGS":
         print(choice_list)
