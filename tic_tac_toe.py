@@ -11,7 +11,7 @@ init_input = input("Enter your symbol(O/X): ")
 
 grid_creator()
 
-print("Enter the block you want to place your symbol at(With correct spacing, for eg - A 2): \n")
+print("Enter the block you want to place your symbol at(With correct spelling, for eg - A2): \n")
 
 if init_input == "X":
     user_symbol = "X"
@@ -22,6 +22,12 @@ else:
 choice_logs = list()
 #0 means turn of user
 chance_counter = 0
+
+
+def combo_checker():
+    for i in grid:
+        if i.count("X") == 3 or i.count("O") == 3:
+            return True
 
 
 while(chance_counter <= 1):
@@ -56,3 +62,6 @@ while(chance_counter <= 1):
                 user_symbol = "X"
         except Exception as e:
             print("That didn't work! Please retry")
+
+        if combo_checker():
+            print(f"{user_symbol} Wins!!")
