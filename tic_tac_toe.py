@@ -25,20 +25,71 @@ chance_counter = 0
 
 
 def combo_checker():
+    combo_helper_list = list()
     for i in grid:
         if i.count("X") == 3 or i.count("O") == 3:
+            print("Game Over!!")
             return True
         else:
             continue
 
+    if grid[0][0] == grid[1][0] == grid[2][0] != "":
+        print("Game Over!!")
+        return True
+    if grid[0][1] == grid[1][1] == grid[2][1] != "":
+        print("Game Over!!")
+        return True
+    if grid[0][2] == grid[1][2] == grid[2][2] != "":
+        print("Game Over!!")
+        return True
+    if grid[0][0] == grid[1][1] == grid[2][2] != "":
+        print("Game Over!!")
+        return True
+    if grid[0][2] == grid[1][1] == grid[2][0] != "":
+        print("Game Over!!")
+        return True
+
+    # Gemini generated:
+    # # 1. Check all 3 Rows
+    # for row in grid:
+    #     if row[0] == row[1] == row[2] != " ": # Ensures the cells aren't empty
+    #         print("Game Over!!")
+    #         return True
+
+    # # 2. Check all 3 Columns
+    # for col in range(3):
+    #     if grid[0][col] == grid[1][col] == grid[2][col] != " ":
+    #         print("Game Over!!")
+    #         return True
+
+    # # 3. Check Left-to-Right Diagonal
+    # if grid[0][0] == grid[1][1] == grid[2][2] != " ":
+    #     print("Game Over!!")
+    #     return True
+
+    # # 4. Check Right-to-Left Diagonal
+    # if grid[0][2] == grid[1][1] == grid[2][0] != " ":
+    #     print("Game Over!!")
+    #     return True
+
+
+mapping = {'A':0,'B':1,'C':2}
+choice_list = list()
 
 while(chance_counter <= 1 and not combo_checker()):
     if combo_checker():
             print(f"Player {user_symbol} Wins!!")
+
+
+    if grid[mapping[choice_list[0].upper()]][int(choice_list[1]) - 1] in ["X","O"]:
+        print("That spot is already taken! Try again.")
+        continue
+
+
     choice = input(f"Player {chance_counter + 1} turn: ")
     choice_logs.append(choice.capitalize())
     #choice_str = choice.split(" ")
-    choice_list = list()
+    
     if choice.upper() == "QUIT":
         print("Thank you for playing")
         break
@@ -48,12 +99,10 @@ while(chance_counter <= 1 and not combo_checker()):
         for i in choice:
             choice_list.append(i)
 
-        mapping = {'A':0,'B':1,'C':2}
-
         
     
         try:
-            grid[mapping[choice_list[0]]][int(choice_list[1]) - 1] = f"{user_symbol}"
+            grid[mapping[choice_list[0].upper()]][int(choice_list[1]) - 1] = f"{user_symbol}"
             grid_creator()
 
             print("\n" * 5)
