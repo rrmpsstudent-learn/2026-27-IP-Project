@@ -28,9 +28,13 @@ def combo_checker():
     for i in grid:
         if i.count("X") == 3 or i.count("O") == 3:
             return True
+        else:
+            continue
 
 
-while(chance_counter <= 1):
+while(chance_counter <= 1 and not combo_checker()):
+    if combo_checker():
+            print(f"Player {user_symbol} Wins!!")
     choice = input(f"Player {chance_counter + 1} turn: ")
     choice_logs.append(choice.capitalize())
     #choice_str = choice.split(" ")
@@ -39,12 +43,14 @@ while(chance_counter <= 1):
         print("Thank you for playing")
         break
     elif choice.upper() == "SHOW --LOGS":
-        print(choice_list)
+        print(choice_logs)
     else:
         for i in choice:
             choice_list.append(i)
 
         mapping = {'A':0,'B':1,'C':2}
+
+        
     
         try:
             grid[mapping[choice_list[0]]][int(choice_list[1]) - 1] = f"{user_symbol}"
@@ -63,9 +69,5 @@ while(chance_counter <= 1):
                 user_symbol = "X"
         except Exception as e:
             print("That didn't work! Please retry")
-<<<<<<< HEAD
 
-        if combo_checker():
-            print(f"{user_symbol} Wins!!")
-=======
->>>>>>> b18902810e66c2367be0c1e3fb374a9a3f17840c
+
