@@ -36,6 +36,7 @@ while(chance_counter <= 1):
     #choice_str = choice.split(" ")
     choice_list = list()
     if choice.upper() == "QUIT":
+        print("Thank you for playing")
         break
     elif choice.upper() == "SHOW --LOGS":
         print(choice_list)
@@ -62,6 +63,9 @@ while(chance_counter <= 1):
                 user_symbol = "X"
         except Exception as e:
             print("That didn't work! Please retry")
+<<<<<<< HEAD
 
         if combo_checker():
             print(f"{user_symbol} Wins!!")
+=======
+>>>>>>> b18902810e66c2367be0c1e3fb374a9a3f17840c
